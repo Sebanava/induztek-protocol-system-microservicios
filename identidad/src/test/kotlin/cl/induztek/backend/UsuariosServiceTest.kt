@@ -13,14 +13,18 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.web.server.ResponseStatusException
 
-@SpringBootTest(properties = ["spring.datasource.url=jdbc:h2:mem:identidad-test;DB_CLOSE_DELAY=-1", "spring.datasource.username=sa", "eureka.client.enabled=false"])
+@SpringBootTest(properties = ["spring.datasource.url=jdbc:h2:mem:identidad-test;DB_CLOSE_DELAY=-1", "spring.datasource.username=sa", "eureka.client.enabled=false", "induztek.recuperacion.remitente=cuentas@induztek.ejemplo"])
+@org.springframework.context.annotation.Import(BuzonConfiguracion::class)
 class UsuariosServiceTest {
     @Autowired lateinit var service: UsuariosService
+    @Autowired lateinit var buzon: BuzonPrueba
     @Autowired lateinit var mapper: ObjectMapper
     @Autowired lateinit var jdbc: JdbcTemplate
 
     @BeforeEach
     fun restaurar() {
+        buzon.mensajes.clear()
+        jdbc.update("DELETE FROM recuperacion_clave")
         jdbc.update("DELETE FROM sesion")
         jdbc.update("DELETE FROM usuario")
         val hash = Claves.crear("Induztek2026!")
@@ -332,5 +336,87 @@ class UsuariosServiceTest {
         }
         val datos = json(original.copy(telefono = "+56 (9) 1234-5678"))
         assertEquals("+56912345678", service.sincronizar(jefe(), listOf(datos)).single().telefono)
+    }
+
+    @Test
+    fun clienteCambiaSuClaveYRevocaSusSesionesSinAfectarOtrasCuentas() {
+        val correo = "mfuentes@envpacifico.ejemplo"
+        val actual = "Induztek2026!"
+        val nueva = "ClientePrueba2026!"
+        val sesion = service.ingresar(Credenciales(correo, actual))
+        val anterior = service.ingresar(Credenciales(correo, actual))
+        val tecnico = service.ingresar(Credenciales("mgodoy@induztek.ejemplo", actual))
+        val token = "Bearer ${sesion.token}"
+        assertEquals(401, assertThrows(ResponseStatusException::class.java) {
+            service.cambiarClave(null, actual, nueva)
+        }.statusCode.value())
+        assertEquals(400, assertThrows(ResponseStatusException::class.java) {
+            service.cambiarClave(token, actual, "corta")
+        }.statusCode.value())
+        assertEquals(403, assertThrows(ResponseStatusException::class.java) {
+            service.cambiarClave(token, "incorrecta", nueva)
+        }.statusCode.value())
+        val resultado = IdentidadController(service).cambiarClave(token, CambioClave(actual, nueva))
+        assertEquals(sesion.usuario.id, resultado.usuario.id)
+        assertEquals(sesion.usuario.version + 1, resultado.usuario.version)
+        assertEquals(resultado.usuario, service.autenticar("Bearer ${resultado.token}"))
+        assertThrows(ResponseStatusException::class.java) { service.autenticar(token) }
+        assertThrows(ResponseStatusException::class.java) { service.autenticar("Bearer ${anterior.token}") }
+        assertThrows(ResponseStatusException::class.java) { service.ingresar(Credenciales(correo, actual)) }
+        assertEquals(resultado.usuario, service.ingresar(Credenciales(correo, nueva)).usuario)
+        assertEquals(tecnico.usuario, service.autenticar("Bearer ${tecnico.token}"))
+    }
+
+    @Test
+    fun clienteRecuperaSinClaveActualConCodigoQueCaducaYEsDeUnSoloUso() {
+        val correo = "mfuentes@envpacifico.ejemplo"
+        val actual = "Induztek2026!"
+        val nueva = "ClienteRestablecido2026!"
+        val previa = service.ingresar(Credenciales(correo, actual))
+        val controlador = IdentidadController(service)
+        controlador.solicitar(SolicitudRecuperacion("inexistente@induztek.ejemplo"))
+        assertTrue(buzon.mensajes.isEmpty())
+        controlador.solicitar(SolicitudRecuperacion(correo))
+        controlador.solicitar(SolicitudRecuperacion(correo))
+        assertEquals(1, buzon.mensajes.size)
+        val correoEnviado = buzon.mensajes.single()
+        assertEquals(correo, correoEnviado.to!!.single())
+        assertEquals("cuentas@induztek.ejemplo", correoEnviado.from)
+        fun codigo() = buzon.mensajes.last().text!!.lineSequence().first { it.length == 32 }
+        val primero = codigo()
+        val hash = jdbc.queryForObject("SELECT codigo_hash FROM recuperacion_clave WHERE usuario_id=?", String::class.java, previa.usuario.id)
+        assertNotEquals(primero, hash)
+        jdbc.update("UPDATE recuperacion_clave SET vence=0, solicitado=0 WHERE usuario_id=?", previa.usuario.id)
+        assertEquals(400, assertThrows(ResponseStatusException::class.java) {
+            controlador.recuperar(ConfirmacionRecuperacion(correo, primero, nueva))
+        }.statusCode.value())
+        controlador.solicitar(SolicitudRecuperacion(correo))
+        assertEquals(2, buzon.mensajes.size)
+        val valido = codigo()
+        assertNotEquals(primero, valido)
+        assertThrows(ResponseStatusException::class.java) {
+            controlador.recuperar(ConfirmacionRecuperacion(correo, "x".repeat(32), nueva))
+        }
+        controlador.recuperar(ConfirmacionRecuperacion(correo, valido, nueva))
+        assertThrows(ResponseStatusException::class.java) {
+            controlador.recuperar(ConfirmacionRecuperacion(correo, valido, "SegundoIntento2026!"))
+        }
+        assertThrows(ResponseStatusException::class.java) { service.ingresar(Credenciales(correo, actual)) }
+        assertThrows(ResponseStatusException::class.java) { service.autenticar("Bearer ${previa.token}") }
+        assertEquals(previa.usuario.id, service.ingresar(Credenciales(correo, nueva)).usuario.id)
+    }
+}
+
+@org.springframework.boot.test.context.TestConfiguration
+class BuzonConfiguracion {
+    @org.springframework.context.annotation.Bean
+    fun buzon() = BuzonPrueba()
+}
+
+class BuzonPrueba : org.springframework.mail.javamail.JavaMailSenderImpl() {
+    val mensajes = mutableListOf<org.springframework.mail.SimpleMailMessage>()
+
+    override fun send(simpleMessage: org.springframework.mail.SimpleMailMessage) {
+        mensajes += org.springframework.mail.SimpleMailMessage(simpleMessage)
     }
 }

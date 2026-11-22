@@ -14,6 +14,7 @@ dependencies {
     implementation(enforcedPlatform("org.springframework.boot:spring-boot-dependencies:3.4.12"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testRuntimeOnly("com.h2database:h2")

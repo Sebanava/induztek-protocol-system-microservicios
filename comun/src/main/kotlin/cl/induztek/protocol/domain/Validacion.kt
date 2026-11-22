@@ -104,4 +104,17 @@ object Validacion {
     }
 
     fun fabricacionValida(anio: Int, fecha: LocalDate = hoy()): Boolean = anio in 1800..fecha.year
+
+    fun validarCambioClave(actual: String, nueva: String) {
+        if (actual.isBlank() || actual.length > 256)
+            throw ErrorFormulario(mapOf("actual" to "Ingresa la contraseña actual"))
+        validarClaveNueva(nueva)
+        if (nueva == actual)
+            throw ErrorFormulario(mapOf("nueva" to "Elige una contraseña distinta de la actual"))
+    }
+
+    fun validarClaveNueva(nueva: String) {
+        if (nueva.isBlank() || nueva.length !in 10..128 || nueva.any(Char::isISOControl))
+            throw ErrorFormulario(mapOf("nueva" to "Usa de 10 a 128 caracteres sin caracteres de control"))
+    }
 }

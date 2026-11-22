@@ -26,7 +26,11 @@ fun main(args: Array<String>) {
 }
 
 @Service
-class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: ObjectMapper) {
+class UsuariosService(
+    private val jdbc: JdbcTemplate,
+    private val mapper: ObjectMapper,
+    private val correoRecuperacion: CorreoRecuperacion? = null,
+) {
     init {
         jdbc.execute(
             "CREATE TABLE IF NOT EXISTS usuario (id VARCHAR(100) PRIMARY KEY, correo VARCHAR(200) UNIQUE NOT NULL, rut VARCHAR(20) UNIQUE NOT NULL, datos TEXT NOT NULL, clave_hash VARCHAR(400) NOT NULL)"
@@ -40,6 +44,9 @@ class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: Object
             "CREATE TABLE IF NOT EXISTS sesion (token_hash VARCHAR(64) PRIMARY KEY, usuario_id VARCHAR(100) NOT NULL, vence BIGINT NOT NULL, FOREIGN KEY (usuario_id) REFERENCES usuario(id))"
         )
         val semilla = mapper.readTree(javaClass.getResourceAsStream("/usuarios-demo.json"))
+        jdbc.execute(
+            "CREATE TABLE IF NOT EXISTS recuperacion_clave (usuario_id VARCHAR(100) PRIMARY KEY, codigo_hash VARCHAR(64) NOT NULL, solicitado BIGINT NOT NULL, vence BIGINT NOT NULL, FOREIGN KEY (usuario_id) REFERENCES usuario(id))"
+        )
         if (jdbc.queryForObject("SELECT COUNT(*) FROM usuario", Int::class.java) == 0) {
             val clave = Claves.crear("Induztek2026!")
             semilla.forEach { insertar(mapper.treeToValue(it, Identidad::class.java), clave) }
@@ -132,10 +139,11 @@ class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: Object
             "%02x".format(it)
         }
 
+    @Transactional
     fun ingresar(c: Credenciales): SesionRemota {
         val filas =
             jdbc.queryForList(
-                "SELECT datos,clave_hash,version FROM usuario WHERE correo = ?",
+                "SELECT datos,clave_hash,version FROM usuario WHERE correo = ? FOR UPDATE",
                 c.correo.trim().lowercase(),
             )
         val fila =
@@ -144,10 +152,91 @@ class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: Object
         val u = perfil(fila)
         if (!u.activo || !Claves.verificar(c.clave, fila["CLAVE_HASH"].toString()))
             throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "Acceso inválido")
-        val token =
-            Base64.getUrlEncoder()
-                .withoutPadding()
-                .encodeToString(ByteArray(32).also { SecureRandom().nextBytes(it) })
+        return crearSesion(u)
+    }
+
+    @Transactional
+    fun cambiarClave(autorizacion: String?, actual: String, nueva: String): SesionRemota {
+        val actor = autenticar(autorizacion)
+        try {
+            Validacion.validarCambioClave(actual, nueva)
+        } catch (e: cl.induztek.protocol.domain.ErrorFormulario) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
+        }
+        val fila = jdbc.queryForList(
+            "SELECT datos,clave_hash,version FROM usuario WHERE id=? FOR UPDATE", actor.id
+        ).singleOrNull() ?: throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
+        val vigente = jdbc.queryForList(
+            "SELECT token_hash FROM sesion WHERE token_hash=? AND usuario_id=? AND vence>? FOR UPDATE",
+            hash(requireNotNull(autorizacion).substring(7)), actor.id, Instant.now().epochSecond,
+        ).isNotEmpty()
+        if (!vigente || !perfil(fila).activo) throw ResponseStatusException(HttpStatus.UNAUTHORIZED)
+        if (!Claves.verificar(actual, fila.getValue("CLAVE_HASH").toString()))
+            throw ResponseStatusException(HttpStatus.FORBIDDEN, "Contraseña actual incorrecta")
+        val perfilActual = perfil(fila)
+        val actualizado = perfilActual.copy(version = perfilActual.version + 1)
+        jdbc.update("UPDATE usuario SET clave_hash=?,version=? WHERE id=?",
+            Claves.crear(nueva), actualizado.version, actualizado.id)
+        invalidarAccesos(actualizado.id)
+        return crearSesion(actualizado)
+    }
+
+    private fun invalidarAccesos(id: String) {
+        jdbc.update("DELETE FROM sesion WHERE usuario_id=?", id)
+        jdbc.update("DELETE FROM recuperacion_clave WHERE usuario_id=?", id)
+    }
+
+    @Transactional
+    fun solicitarRecuperacion(correo: String) {
+        val canal = correoRecuperacion?.takeIf { it.disponible() }
+            ?: throw ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Recuperación por correo no disponible")
+        if (!Validacion.correoValido(correo)) return
+        val perfil = cuentaParaRecuperacion(correo) ?: return
+        val ahora = Instant.now().epochSecond
+        val previo = jdbc.queryForList(
+            "SELECT solicitado FROM recuperacion_clave WHERE usuario_id=? FOR UPDATE", perfil.id,
+        ).singleOrNull()?.get("SOLICITADO") as? Number
+        if (previo != null && ahora - previo.toLong() < 60) return
+        val codigo = nuevoToken(24)
+        jdbc.update("DELETE FROM recuperacion_clave WHERE usuario_id=?", perfil.id)
+        jdbc.update("INSERT INTO recuperacion_clave VALUES (?,?,?,?)", perfil.id, hash(codigo), ahora, ahora + 900)
+        try {
+            canal.enviar(perfil.correo, codigo)
+        } catch (_: org.springframework.mail.MailException) {
+            jdbc.update("DELETE FROM recuperacion_clave WHERE usuario_id=?", perfil.id)
+        }
+    }
+
+    @Transactional
+    fun recuperarClave(correo: String, codigo: String, nueva: String) {
+        try {
+            Validacion.validarClaveNueva(nueva)
+        } catch (e: cl.induztek.protocol.domain.ErrorFormulario) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
+        }
+        fun codigoInvalido(): Nothing =
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Código inválido o vencido")
+        if (!codigo.trim().matches(Regex("[A-Za-z0-9_-]{32}"))) codigoInvalido()
+        val perfil = cuentaParaRecuperacion(correo) ?: codigoInvalido()
+        val vigente = jdbc.queryForList(
+            "SELECT codigo_hash FROM recuperacion_clave WHERE usuario_id=? AND vence>? FOR UPDATE",
+            perfil.id, Instant.now().epochSecond,
+        ).singleOrNull()?.get("CODIGO_HASH")?.toString() ?: codigoInvalido()
+        if (!MessageDigest.isEqual(vigente.toByteArray(), hash(codigo.trim()).toByteArray())) codigoInvalido()
+        jdbc.update("UPDATE usuario SET clave_hash=?,version=? WHERE id=?",
+            Claves.crear(nueva), perfil.version + 1, perfil.id)
+        invalidarAccesos(perfil.id)
+    }
+
+    private fun cuentaParaRecuperacion(correo: String): Identidad? =
+        jdbc.queryForList("SELECT datos,version FROM usuario WHERE correo=? FOR UPDATE", correo.trim().lowercase())
+            .singleOrNull()?.let(::perfil)?.takeIf { it.activo }
+
+    private fun nuevoToken(bytes: Int): String =
+        Base64.getUrlEncoder().withoutPadding().encodeToString(ByteArray(bytes).also { SecureRandom().nextBytes(it) })
+
+    private fun crearSesion(u: Identidad): SesionRemota {
+        val token = nuevoToken(32)
         jdbc.update(
             "INSERT INTO sesion VALUES (?,?,?)",
             hash(token),
@@ -251,6 +340,10 @@ class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: Object
     }
 }
 
+data class CambioClave(val actual: String, val nueva: String)
+data class SolicitudRecuperacion(val correo: String)
+data class ConfirmacionRecuperacion(val correo: String, val codigo: String, val nueva: String)
+
 @RestController
 @RequestMapping("/api")
 class IdentidadController(private val usuarios: UsuariosService) {
@@ -261,6 +354,22 @@ class IdentidadController(private val usuarios: UsuariosService) {
     @GetMapping("/sesion")
     fun sesion(@RequestHeader("Authorization", required = false) token: String?) =
         usuarios.autenticar(token)
+
+    @PostMapping("/recuperacion/solicitar")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    fun solicitar(@RequestBody solicitud: SolicitudRecuperacion) =
+        usuarios.solicitarRecuperacion(solicitud.correo)
+
+    @PostMapping("/recuperacion/confirmar")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun recuperar(@RequestBody solicitud: ConfirmacionRecuperacion) =
+        usuarios.recuperarClave(solicitud.correo, solicitud.codigo, solicitud.nueva)
+
+    @PostMapping("/mi-contrasena")
+    fun cambiarClave(
+        @RequestHeader("Authorization", required = false) token: String?,
+        @RequestBody cambio: CambioClave,
+    ) = usuarios.cambiarClave(token, cambio.actual, cambio.nueva)
 
     @GetMapping("/usuarios")
     fun listar(@RequestHeader("Authorization", required = false) token: String?) =
