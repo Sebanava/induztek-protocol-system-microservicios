@@ -1,1 +1,0 @@
-# induztek-protocol-system-microservicios

@@ -1,0 +1,1710 @@
+[
+  {
+    "tipo": "instalacion",
+    "id": "lampa",
+    "datos": {
+      "registro": {
+        "id": "lampa",
+        "clienteId": "pacifico",
+        "nombre": "Planta Lampa",
+        "ubicacion": "Sector industrial",
+        "comuna": "Lampa",
+        "acceso": "Inducción obligatoria 30 min"
+      }
+    }
+  },
+  {
+    "tipo": "instalacion",
+    "id": "sur",
+    "datos": {
+      "registro": {
+        "id": "sur",
+        "clienteId": "sanitaria",
+        "nombre": "Planta Elevadora Sur",
+        "ubicacion": "Sector rural poniente",
+        "comuna": "San Bernardo",
+        "acceso": "Sala subterránea sin señal"
+      }
+    }
+  },
+  {
+    "tipo": "instalacion",
+    "id": "tiltil",
+    "datos": {
+      "registro": {
+        "id": "tiltil",
+        "clienteId": "minera",
+        "nombre": "Faena Til Til",
+        "ubicacion": "Ruta 5 Norte",
+        "comuna": "Til Til",
+        "acceso": "Sin señal"
+      }
+    }
+  },
+  {
+    "tipo": "instalacion",
+    "id": "edificio",
+    "datos": {
+      "registro": {
+        "id": "edificio",
+        "clienteId": "clinica",
+        "nombre": "Edificio Clínico",
+        "ubicacion": "Zona urbana",
+        "comuna": "La Florida",
+        "acceso": "Cortes domingos 06:00–10:00"
+      }
+    }
+  },
+  {
+    "tipo": "instalacion",
+    "id": "molienda",
+    "datos": {
+      "registro": {
+        "id": "molienda",
+        "clienteId": "cementos",
+        "nombre": "Planta Molienda",
+        "ubicacion": "Sector precordillera",
+        "comuna": "Puente Alto",
+        "acceso": "Respirador obligatorio"
+      }
+    }
+  },
+  {
+    "tipo": "instalacion",
+    "id": "site",
+    "datos": {
+      "registro": {
+        "id": "site",
+        "clienteId": "datacenter",
+        "nombre": "Site Huechuraba",
+        "ubicacion": "Parque empresarial",
+        "comuna": "Huechuraba",
+        "acceso": "Acompañamiento del cliente"
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "tr01",
+    "datos": {
+      "registro": {
+        "id": "tr01",
+        "instalacionId": "lampa",
+        "tipoId": "TRANSFORMADOR",
+        "tag": "TR-01",
+        "marca": "Rhona",
+        "modelo": "Referencia Anexo 9",
+        "serie": "RH-18733",
+        "anio": 2012,
+        "potencia": 1500.0,
+        "tensiones": "12 / 0,4 kV",
+        "corriente": null,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "tr02",
+    "datos": {
+      "registro": {
+        "id": "tr02",
+        "instalacionId": "lampa",
+        "tipoId": "TRANSFORMADOR",
+        "tag": "TR-02",
+        "marca": "Rhona",
+        "modelo": "Referencia Anexo 9",
+        "serie": "RH-21904",
+        "anio": 2017,
+        "potencia": 1000.0,
+        "tensiones": "12 / 0,4 kV",
+        "corriente": null,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "tra",
+    "datos": {
+      "registro": {
+        "id": "tra",
+        "instalacionId": "sur",
+        "tipoId": "TRANSFORMADOR",
+        "tag": "TR-A",
+        "marca": "Tusan",
+        "modelo": "Referencia Anexo 9",
+        "serie": "TS-5521",
+        "anio": 2009,
+        "potencia": 2500.0,
+        "tensiones": "23 / 0,4 kV",
+        "corriente": null,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "cel",
+    "datos": {
+      "registro": {
+        "id": "cel",
+        "instalacionId": "edificio",
+        "tipoId": "CELDA",
+        "tag": "CEL-MT-03",
+        "marca": "Ormazabal",
+        "modelo": "Referencia Anexo 9",
+        "serie": "OR-77812",
+        "anio": 2018,
+        "potencia": null,
+        "tensiones": "12 kV",
+        "corriente": 630.0,
+        "maxContactos": 60.0,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "int",
+    "datos": {
+      "registro": {
+        "id": "int",
+        "instalacionId": "tiltil",
+        "tipoId": "INTERRUPTOR",
+        "tag": "INT-52-1",
+        "marca": "Schneider",
+        "modelo": "Referencia Anexo 9",
+        "serie": "SE-449021",
+        "anio": 2015,
+        "potencia": null,
+        "tensiones": "23 kV",
+        "corriente": 1250.0,
+        "maxContactos": 45.0,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "rel",
+    "datos": {
+      "registro": {
+        "id": "rel",
+        "instalacionId": "molienda",
+        "tipoId": "RELE",
+        "tag": "REL-50/51-A",
+        "marca": "SEL",
+        "modelo": "Referencia Anexo 9",
+        "serie": "SEL-751-30219",
+        "anio": 2020,
+        "potencia": null,
+        "tensiones": "",
+        "corriente": 5.0,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "cab",
+    "datos": {
+      "registro": {
+        "id": "cab",
+        "instalacionId": "site",
+        "tipoId": "CABLE",
+        "tag": "CAB-MT-02",
+        "marca": "Nexans",
+        "modelo": "Referencia Anexo 9",
+        "serie": "NX-2201-B",
+        "anio": 2019,
+        "potencia": null,
+        "tensiones": "15 kV; 3×240 mm²; 180 m",
+        "corriente": null,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "equipo",
+    "id": "trss",
+    "datos": {
+      "registro": {
+        "id": "trss",
+        "instalacionId": "tiltil",
+        "tipoId": "TRANSFORMADOR",
+        "tag": "TR-SS-01",
+        "marca": "ABB",
+        "modelo": "Referencia Anexo 9",
+        "serie": "ABB-1180442",
+        "anio": 2011,
+        "potencia": 5000.0,
+        "tensiones": "23 / 6,6 kV",
+        "corriente": null,
+        "maxContactos": null,
+        "observaciones": "",
+        "foto": null
+      }
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "meg5",
+    "datos": {
+      "registro": {
+        "id": "meg5",
+        "tipoPruebaId": "AISLACION",
+        "nombre": "Megóhmetro 5 kV",
+        "marcaModelo": "Megger MIT525",
+        "serie": "MIT-0045821"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-meg5",
+          "instrumentoId": "meg5",
+          "desde": "2026-03-15",
+          "hasta": "2027-03-15"
+        },
+        {
+          "id": "cal-meg5-historica-demo",
+          "instrumentoId": "meg5",
+          "desde": "2024-01-01",
+          "hasta": "2025-12-31"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "meg10",
+    "datos": {
+      "registro": {
+        "id": "meg10",
+        "tipoPruebaId": "AISLACION",
+        "nombre": "Megóhmetro 10 kV",
+        "marcaModelo": "Megger MIT1025",
+        "serie": "MIT-0071233"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-meg10",
+          "instrumentoId": "meg10",
+          "desde": "2025-10-10",
+          "hasta": "2026-10-10"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "ttr",
+    "datos": {
+      "registro": {
+        "id": "ttr",
+        "tipoPruebaId": "TTR",
+        "nombre": "Medidor TTR",
+        "marcaModelo": "Megger TTR300",
+        "serie": "TTR-30044"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-ttr",
+          "instrumentoId": "ttr",
+          "desde": "2026-06-02",
+          "hasta": "2027-06-02"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "micro",
+    "datos": {
+      "registro": {
+        "id": "micro",
+        "tipoPruebaId": "CONTACTOS",
+        "nombre": "Micro-ohmímetro (vencido)",
+        "marcaModelo": "Megger DLRO10X",
+        "serie": "DLR-10882"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-micro",
+          "instrumentoId": "micro",
+          "desde": "2025-08-20",
+          "hasta": "2026-08-20"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "inyeccion",
+    "datos": {
+      "registro": {
+        "id": "inyeccion",
+        "tipoPruebaId": "OPERACION_RELE",
+        "nombre": "Inyección secundaria",
+        "marcaModelo": "Omicron CMC 356",
+        "serie": "CMC-HB411"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-inyeccion",
+          "instrumentoId": "inyeccion",
+          "desde": "2026-01-05",
+          "hasta": "2027-01-05"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "dev-demo",
+    "datos": {
+      "registro": {
+        "id": "dev-demo",
+        "tipoPruebaId": "DEVANADOS",
+        "nombre": "Medidor devanados · sintético",
+        "marcaModelo": "Demo académica",
+        "serie": "DEMO-DEV-01"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-dev-demo",
+          "instrumentoId": "dev-demo",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "instrumento",
+    "id": "contacto-demo",
+    "datos": {
+      "registro": {
+        "id": "contacto-demo",
+        "tipoPruebaId": "CONTACTOS",
+        "nombre": "Micro-ohmímetro · sintético vigente",
+        "marcaModelo": "Demo académica",
+        "serie": "DEMO-CON-01"
+      },
+      "calibraciones": [
+        {
+          "id": "cal-contacto-demo",
+          "instrumentoId": "contacto-demo",
+          "desde": "2026-01-01",
+          "hasta": "2027-12-31"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-2024",
+    "datos": {
+      "registro": {
+        "id": "vis-2024",
+        "instalacionId": "lampa",
+        "ingenieroId": "acontreras",
+        "ot": "OT-DEMO-2024",
+        "fecha": "2024-09-14",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2024-09-14T13:42:00"
+      },
+      "participantes": [
+        {
+          "id": "part-2024",
+          "visitaId": "vis-2024",
+          "usuarioId": "mgodoy"
+        }
+      ],
+      "recepciones": [
+        {
+          "id": "rec-2024",
+          "visitaId": "vis-2024",
+          "nombre": "Marcela Fuentes Rojas",
+          "rut": "14.226.791-8",
+          "cargo": "Jefa de Mantenimiento",
+          "fechaHora": "2024-09-14T13:42:00",
+          "documento": "PRECARGA HISTÓRICA ILUSTRATIVA · DATOS FICTICIOS\nINDUZTEK INGENIERÍA SpA\nACTA DE PRUEBA EN TERRENO\nPendiente de formalización\nUna acta por visita · OT OT-DEMO-2024 · Fecha 2024-09-14\nRecibe: Marcela Fuentes Rojas · RUT 14.226.791-8 · Cargo Jefa de Mantenimiento · Recepción 2024-09-14T13:42:00\nLa recepción acredita entrega del respaldo, no aprobación técnica.\n\nINDUZTEK INGENIERÍA SpA\nDATOS FICTICIOS · MVP ACADÉMICO · NO ES UN CERTIFICADO REAL\nPROTOCOLO POR EQUIPO · PT-2024-0312\nFormalizado\nCliente: Envasadora del Pacífico S.A.\nInstalación: Planta Lampa · Sector industrial · Lampa · Región Metropolitana\nEquipo: TR-01 · Transformador · Serie: RH-18733\nMarca/modelo: Rhona Referencia Anexo 9\nFecha de prueba: 2024-09-14T10:00:00 · Técnico: Matías Godoy Herrera\nTemperatura: 18.0 °C · Humedad: 55.0 %\nResultado global: Aprobado\nMantenimiento: No registrado\n\nResistencia de aislación · AT-BT · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de aislación · AT-T · UNICA\nInstrumento: Megóhmetro 5 kV · Megger MIT525 · Serie MIT-0045821\nCalibración: 2024-01-01 / vence 2025-12-31\nLectura a 10 minutos: 31250.00 MΩ\nLectura a 1 minuto: 12500.00 MΩ\nTensión de prueba: 5.00 kV\nIP: 2.50\nResultado: Aprobado\nComentario: Medición histórica del Anexo 9\n\nResistencia de aislación · BT-T · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H1-X1 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H2-X2 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H3-X3 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\nTrazabilidad: 2024-09-14T13:00:00 · Andrea Contreras Silva · Formalizado · Precarga histórica sintética; no representa una acción efectuada en la app\n\n"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-2025",
+    "datos": {
+      "registro": {
+        "id": "vis-2025",
+        "instalacionId": "lampa",
+        "ingenieroId": "acontreras",
+        "ot": "OT-DEMO-2025",
+        "fecha": "2025-09-13",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2025-09-13T13:42:00"
+      },
+      "participantes": [
+        {
+          "id": "part-2025",
+          "visitaId": "vis-2025",
+          "usuarioId": "jtapia"
+        }
+      ],
+      "recepciones": [
+        {
+          "id": "rec-2025",
+          "visitaId": "vis-2025",
+          "nombre": "Marcela Fuentes Rojas",
+          "rut": "14.226.791-8",
+          "cargo": "Jefa de Mantenimiento",
+          "fechaHora": "2025-09-13T13:42:00",
+          "documento": "PRECARGA HISTÓRICA ILUSTRATIVA · DATOS FICTICIOS\nINDUZTEK INGENIERÍA SpA\nACTA DE PRUEBA EN TERRENO\nPendiente de formalización\nUna acta por visita · OT OT-DEMO-2025 · Fecha 2025-09-13\nRecibe: Marcela Fuentes Rojas · RUT 14.226.791-8 · Cargo Jefa de Mantenimiento · Recepción 2025-09-13T13:42:00\nLa recepción acredita entrega del respaldo, no aprobación técnica.\n\nINDUZTEK INGENIERÍA SpA\nDATOS FICTICIOS · MVP ACADÉMICO · NO ES UN CERTIFICADO REAL\nPROTOCOLO POR EQUIPO · PT-2025-0288\nFormalizado\nCliente: Envasadora del Pacífico S.A.\nInstalación: Planta Lampa · Sector industrial · Lampa · Región Metropolitana\nEquipo: TR-01 · Transformador · Serie: RH-18733\nMarca/modelo: Rhona Referencia Anexo 9\nFecha de prueba: 2025-09-13T10:00:00 · Técnico: Javiera Tapia Muñoz\nTemperatura: 21.0 °C · Humedad: 48.0 %\nResultado global: Aprobado\nMantenimiento: No registrado\n\nResistencia de aislación · AT-BT · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de aislación · AT-T · UNICA\nInstrumento: Megóhmetro 5 kV · Megger MIT525 · Serie MIT-0045821\nCalibración: 2024-01-01 / vence 2025-12-31\nLectura a 10 minutos: 21560.00 MΩ\nLectura a 1 minuto: 9800.00 MΩ\nTensión de prueba: 5.00 kV\nIP: 2.20\nResultado: Aprobado\nComentario: Medición histórica del Anexo 9\n\nResistencia de aislación · BT-T · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H1-X1 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H2-X2 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H3-X3 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\nVariación significativa · AT-T · Lectura a 10 minutos: -31.01 %\nTrazabilidad: 2025-09-13T13:00:00 · Andrea Contreras Silva · Formalizado · Precarga histórica sintética; no representa una acción efectuada en la app\n\n"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-2026",
+    "datos": {
+      "registro": {
+        "id": "vis-2026",
+        "instalacionId": "lampa",
+        "ingenieroId": "acontreras",
+        "ot": "OT-2026-1187",
+        "fecha": "2026-09-26",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2026-09-26T13:42:00"
+      },
+      "participantes": [
+        {
+          "id": "part-2026",
+          "visitaId": "vis-2026",
+          "usuarioId": "mgodoy"
+        }
+      ],
+      "recepciones": [
+        {
+          "id": "rec-2026",
+          "visitaId": "vis-2026",
+          "nombre": "Marcela Fuentes Rojas",
+          "rut": "14.226.791-8",
+          "cargo": "Jefa de Mantenimiento",
+          "fechaHora": "2026-09-26T13:42:00",
+          "documento": "PRECARGA HISTÓRICA ILUSTRATIVA · DATOS FICTICIOS\nINDUZTEK INGENIERÍA SpA\nACTA DE PRUEBA EN TERRENO\nPendiente de formalización\nUna acta por visita · OT OT-2026-1187 · Fecha 2026-09-26\nRecibe: Marcela Fuentes Rojas · RUT 14.226.791-8 · Cargo Jefa de Mantenimiento · Recepción 2026-09-26T13:42:00\nLa recepción acredita entrega del respaldo, no aprobación técnica.\n\nINDUZTEK INGENIERÍA SpA\nDATOS FICTICIOS · MVP ACADÉMICO · NO ES UN CERTIFICADO REAL\nPROTOCOLO POR EQUIPO · PT-2026-0401\nPendiente de formalización\nCliente: Envasadora del Pacífico S.A.\nInstalación: Planta Lampa · Sector industrial · Lampa · Región Metropolitana\nEquipo: TR-01 · Transformador · Serie: RH-18733\nMarca/modelo: Rhona Referencia Anexo 9\nFecha de prueba: 2026-09-26T10:00:00 · Técnico: Matías Godoy Herrera\nTemperatura: 19.0 °C · Humedad: 60.0 %\nResultado global: Observado\nMantenimiento: No registrado\n\nResistencia de aislación · AT-BT · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de aislación · AT-T · UNICA\nInstrumento: Megóhmetro 5 kV · Megger MIT525 · Serie MIT-0045821\nCalibración: 2026-03-15 / vence 2027-03-15\nLectura a 10 minutos: 10980.00 MΩ\nLectura a 1 minuto: 6100.00 MΩ\nTensión de prueba: 5.00 kV\nIP: 1.80\nResultado: Observado\nComentario: Medición histórica del Anexo 9\n\nResistencia de aislación · BT-T · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · AT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-U · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-V · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nResistencia de devanados · BT-W · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H1-X1 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H2-X2 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\n\nRelación de transformación · H3-X3 · UNICA\nNo realizada: Demo parcial: medición no suministrada en Anexo 9\nVariación significativa · AT-T · Lectura a 10 minutos: -49.07 %\nVariación significativa · AT-T · Lectura a 1 minuto: -37.76 %\nTrazabilidad: 2026-09-26T13:00:00 · Matías Godoy Herrera · Registrado en terreno · Precarga histórica sintética; no representa una acción efectuada en la app\n\n\nINDUZTEK INGENIERÍA SpA\nDATOS FICTICIOS · MVP ACADÉMICO · NO ES UN CERTIFICADO REAL\nPROTOCOLO POR EQUIPO · PT-2026-0402\nPendiente de formalización\nCliente: Envasadora del Pacífico S.A.\nInstalación: Planta Lampa · Sector industrial · Lampa · Región Metropolitana\nEquipo: TR-02 · Transformador · Serie: RH-21904\nMarca/modelo: Rhona Referencia Anexo 9\nFecha de prueba: 2026-09-26T08:30:00 · Técnico: Matías Godoy Herrera\nTemperatura: 19.0 °C · Humedad: 60.0 %\nResultado global: Aprobado\nMantenimiento: No registrado\n\nResistencia de aislación · AT-BT · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de aislación · AT-T · UNICA\nInstrumento: Megóhmetro 5 kV · Megger MIT525 · Serie MIT-0045821\nCalibración: 2026-03-15 / vence 2027-03-15\nLectura a 10 minutos: 20000.00 MΩ\nLectura a 1 minuto: 8000.00 MΩ\nTensión de prueba: 5.00 kV\nIP: 2.50\nResultado: Aprobado\nComentario: Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales\n\nResistencia de aislación · BT-T · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · AT-U · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · AT-V · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · AT-W · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · BT-U · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · BT-V · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de devanados · BT-W · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nRelación de transformación · H1-X1 · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nRelación de transformación · H2-X2 · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nRelación de transformación · H3-X3 · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\nTrazabilidad: 2026-09-26T12:00:00 · Matías Godoy Herrera · Registrado en terreno · Precarga histórica sintética; no es actividad real de usuarios\n\n"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-p-cel",
+    "datos": {
+      "registro": {
+        "id": "vis-p-cel",
+        "instalacionId": "edificio",
+        "ingenieroId": "smorales",
+        "ot": "OT-2026-1154",
+        "fecha": "2026-09-20",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2026-09-20T13:00:00"
+      },
+      "participantes": [
+        {
+          "id": "part-p-cel",
+          "visitaId": "vis-p-cel",
+          "usuarioId": "crondon"
+        }
+      ],
+      "recepciones": [
+        {
+          "id": "rec-cel",
+          "visitaId": "vis-p-cel",
+          "nombre": "Tomás Leiva Araya",
+          "rut": "18.390.452-3",
+          "cargo": "Supervisor Eléctrico",
+          "fechaHora": "2026-09-20T09:55:00",
+          "documento": "PRECARGA HISTÓRICA ILUSTRATIVA · DATOS FICTICIOS\nINDUZTEK INGENIERÍA SpA\nACTA DE PRUEBA EN TERRENO\nPendiente de formalización\nUna acta por visita · OT OT-2026-1154 · Fecha 2026-09-20\nRecibe: Tomás Leiva Araya · RUT 18.390.452-3 · Cargo Supervisor Eléctrico · Recepción 2026-09-20T09:55:00\nLa recepción acredita entrega del respaldo, no aprobación técnica.\n\nINDUZTEK INGENIERÍA SpA\nDATOS FICTICIOS · MVP ACADÉMICO · NO ES UN CERTIFICADO REAL\nPROTOCOLO POR EQUIPO · PT-2026-0389\nPendiente de formalización\nCliente: Clínica Los Aromos Ltda.\nInstalación: Edificio Clínico · Zona urbana · La Florida · Región Metropolitana\nEquipo: CEL-MT-03 · Celda MT · Serie: OR-77812\nMarca/modelo: Ormazabal Referencia Anexo 9\nFecha de prueba: 2026-09-20T08:30:00 · Técnico: Carlos Rondón Pérez\nTemperatura: 22.0 °C · Humedad: 45.0 %\nResultado global: Observado\nMantenimiento: No registrado\n\nResistencia de aislación · General · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de contactos · Polo 1 · UNICA\nInstrumento: Micro-ohmímetro · sintético vigente · Demo académica · Serie DEMO-CON-01\nCalibración: 2026-01-01 / vence 2027-12-31\nResistencia de contacto: 66.00 µΩ\nResultado: Observado\nComentario: Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales\n\nResistencia de contactos · Polo 2 · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\n\nResistencia de contactos · Polo 3 · UNICA\nNo realizada: Demo parcial: valores no aportados por el anexo\nTrazabilidad: 2026-09-20T12:00:00 · Sebastián Morales Gutiérrez · Observado · Precarga histórica sintética; no es actividad real de usuarios\n\n"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-p-rel",
+    "datos": {
+      "registro": {
+        "id": "vis-p-rel",
+        "instalacionId": "molienda",
+        "ingenieroId": "acontreras",
+        "ot": "OT-DEMO-rel",
+        "fecha": "2026-09-15",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2026-09-15T13:00:00"
+      },
+      "participantes": [
+        {
+          "id": "part-p-rel",
+          "visitaId": "vis-p-rel",
+          "usuarioId": "dvalenzuela"
+        }
+      ],
+      "recepciones": []
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-p-int",
+    "datos": {
+      "registro": {
+        "id": "vis-p-int",
+        "instalacionId": "tiltil",
+        "ingenieroId": "smorales",
+        "ot": "OT-DEMO-int",
+        "fecha": "2026-09-08",
+        "tipo": "SOLO_PRUEBAS",
+        "cierre": "2026-09-08T13:00:00"
+      },
+      "participantes": [
+        {
+          "id": "part-p-int",
+          "visitaId": "vis-p-int",
+          "usuarioId": "jtapia"
+        }
+      ],
+      "recepciones": []
+    }
+  },
+  {
+    "tipo": "visita",
+    "id": "vis-demo",
+    "datos": {
+      "registro": {
+        "id": "vis-demo",
+        "instalacionId": "lampa",
+        "ingenieroId": "acontreras",
+        "ot": "OT-DEMO-ABIERTA",
+        "fecha": "2026-10-18",
+        "tipo": "PRUEBAS_Y_MANT",
+        "cierre": null
+      },
+      "participantes": [
+        {
+          "id": "part-demo",
+          "visitaId": "vis-demo",
+          "usuarioId": "mgodoy"
+        }
+      ],
+      "recepciones": []
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-2024",
+    "datos": {
+      "registro": {
+        "id": "p-2024",
+        "numero": "PT-2024-0312",
+        "visitaId": "vis-2024",
+        "equipoId": "tr01",
+        "creadorId": "mgodoy",
+        "fechaHora": "2024-09-14T10:00:00",
+        "temperatura": 18.0,
+        "humedad": 55.0,
+        "mantenimiento": "",
+        "estado": "FORMALIZADO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "ais-2024",
+          "protocoloId": "p-2024",
+          "tipoId": "AISLACION",
+          "elemento": "AT-T",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "meg5",
+          "resultado": "APROBADO",
+          "comentario": "Medición histórica del Anexo 9",
+          "opera": true
+        },
+        {
+          "id": "2024-AISLACION-AT-BT",
+          "protocoloId": "p-2024",
+          "tipoId": "AISLACION",
+          "elemento": "AT-BT",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-AISLACION-BT-T",
+          "protocoloId": "p-2024",
+          "tipoId": "AISLACION",
+          "elemento": "BT-T",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-TTR-H1-X1",
+          "protocoloId": "p-2024",
+          "tipoId": "TTR",
+          "elemento": "H1-X1",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-TTR-H2-X2",
+          "protocoloId": "p-2024",
+          "tipoId": "TTR",
+          "elemento": "H2-X2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-TTR-H3-X3",
+          "protocoloId": "p-2024",
+          "tipoId": "TTR",
+          "elemento": "H3-X3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-AT-U",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-AT-V",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-AT-W",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-BT-U",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-BT-V",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2024-DEVANADOS-BT-W",
+          "protocoloId": "p-2024",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "2024-TENSION_PRUEBA",
+          "pruebaId": "ais-2024",
+          "parametroId": "AISLACION:TENSION_PRUEBA",
+          "valor": 5.0
+        },
+        {
+          "id": "2024-LECTURA_1MIN",
+          "pruebaId": "ais-2024",
+          "parametroId": "AISLACION:LECTURA_1MIN",
+          "valor": 12500.0
+        },
+        {
+          "id": "2024-LECTURA_10MIN",
+          "pruebaId": "ais-2024",
+          "parametroId": "AISLACION:LECTURA_10MIN",
+          "valor": 31250.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "hist-2024",
+          "protocoloId": "p-2024",
+          "usuarioId": "acontreras",
+          "anterior": "BORRADOR",
+          "nuevo": "FORMALIZADO",
+          "fechaHora": "2024-09-14T13:00:00",
+          "motivo": "Precarga histórica sintética; no representa una acción efectuada en la app"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-2025",
+    "datos": {
+      "registro": {
+        "id": "p-2025",
+        "numero": "PT-2025-0288",
+        "visitaId": "vis-2025",
+        "equipoId": "tr01",
+        "creadorId": "jtapia",
+        "fechaHora": "2025-09-13T10:00:00",
+        "temperatura": 21.0,
+        "humedad": 48.0,
+        "mantenimiento": "",
+        "estado": "FORMALIZADO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "ais-2025",
+          "protocoloId": "p-2025",
+          "tipoId": "AISLACION",
+          "elemento": "AT-T",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "meg5",
+          "resultado": "APROBADO",
+          "comentario": "Medición histórica del Anexo 9",
+          "opera": true
+        },
+        {
+          "id": "2025-AISLACION-AT-BT",
+          "protocoloId": "p-2025",
+          "tipoId": "AISLACION",
+          "elemento": "AT-BT",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-AISLACION-BT-T",
+          "protocoloId": "p-2025",
+          "tipoId": "AISLACION",
+          "elemento": "BT-T",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-TTR-H1-X1",
+          "protocoloId": "p-2025",
+          "tipoId": "TTR",
+          "elemento": "H1-X1",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-TTR-H2-X2",
+          "protocoloId": "p-2025",
+          "tipoId": "TTR",
+          "elemento": "H2-X2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-TTR-H3-X3",
+          "protocoloId": "p-2025",
+          "tipoId": "TTR",
+          "elemento": "H3-X3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-AT-U",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-AT-V",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-AT-W",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-BT-U",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-BT-V",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2025-DEVANADOS-BT-W",
+          "protocoloId": "p-2025",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "2025-TENSION_PRUEBA",
+          "pruebaId": "ais-2025",
+          "parametroId": "AISLACION:TENSION_PRUEBA",
+          "valor": 5.0
+        },
+        {
+          "id": "2025-LECTURA_1MIN",
+          "pruebaId": "ais-2025",
+          "parametroId": "AISLACION:LECTURA_1MIN",
+          "valor": 9800.0
+        },
+        {
+          "id": "2025-LECTURA_10MIN",
+          "pruebaId": "ais-2025",
+          "parametroId": "AISLACION:LECTURA_10MIN",
+          "valor": 21560.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "hist-2025",
+          "protocoloId": "p-2025",
+          "usuarioId": "acontreras",
+          "anterior": "BORRADOR",
+          "nuevo": "FORMALIZADO",
+          "fechaHora": "2025-09-13T13:00:00",
+          "motivo": "Precarga histórica sintética; no representa una acción efectuada en la app"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-2026",
+    "datos": {
+      "registro": {
+        "id": "p-2026",
+        "numero": "PT-2026-0401",
+        "visitaId": "vis-2026",
+        "equipoId": "tr01",
+        "creadorId": "mgodoy",
+        "fechaHora": "2026-09-26T10:00:00",
+        "temperatura": 19.0,
+        "humedad": 60.0,
+        "mantenimiento": "",
+        "estado": "REGISTRADO_TERRENO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "ais-2026",
+          "protocoloId": "p-2026",
+          "tipoId": "AISLACION",
+          "elemento": "AT-T",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "meg5",
+          "resultado": "OBSERVADO",
+          "comentario": "Medición histórica del Anexo 9",
+          "opera": true
+        },
+        {
+          "id": "2026-AISLACION-AT-BT",
+          "protocoloId": "p-2026",
+          "tipoId": "AISLACION",
+          "elemento": "AT-BT",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-AISLACION-BT-T",
+          "protocoloId": "p-2026",
+          "tipoId": "AISLACION",
+          "elemento": "BT-T",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-TTR-H1-X1",
+          "protocoloId": "p-2026",
+          "tipoId": "TTR",
+          "elemento": "H1-X1",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-TTR-H2-X2",
+          "protocoloId": "p-2026",
+          "tipoId": "TTR",
+          "elemento": "H2-X2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-TTR-H3-X3",
+          "protocoloId": "p-2026",
+          "tipoId": "TTR",
+          "elemento": "H3-X3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-AT-U",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-AT-V",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-AT-W",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-BT-U",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-BT-V",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "2026-DEVANADOS-BT-W",
+          "protocoloId": "p-2026",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: medición no suministrada en Anexo 9",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "2026-TENSION_PRUEBA",
+          "pruebaId": "ais-2026",
+          "parametroId": "AISLACION:TENSION_PRUEBA",
+          "valor": 5.0
+        },
+        {
+          "id": "2026-LECTURA_1MIN",
+          "pruebaId": "ais-2026",
+          "parametroId": "AISLACION:LECTURA_1MIN",
+          "valor": 6100.0
+        },
+        {
+          "id": "2026-LECTURA_10MIN",
+          "pruebaId": "ais-2026",
+          "parametroId": "AISLACION:LECTURA_10MIN",
+          "valor": 10980.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "hist-2026",
+          "protocoloId": "p-2026",
+          "usuarioId": "mgodoy",
+          "anterior": "BORRADOR",
+          "nuevo": "REGISTRADO_TERRENO",
+          "fechaHora": "2026-09-26T13:00:00",
+          "motivo": "Precarga histórica sintética; no representa una acción efectuada en la app"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-tr02",
+    "datos": {
+      "registro": {
+        "id": "p-tr02",
+        "numero": "PT-2026-0402",
+        "visitaId": "vis-2026",
+        "equipoId": "tr02",
+        "creadorId": "mgodoy",
+        "fechaHora": "2026-09-26T08:30:00",
+        "temperatura": 19.0,
+        "humedad": 60.0,
+        "mantenimiento": "",
+        "estado": "REGISTRADO_TERRENO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "pr-p-tr02",
+          "protocoloId": "p-tr02",
+          "tipoId": "AISLACION",
+          "elemento": "AT-T",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "meg5",
+          "resultado": "APROBADO",
+          "comentario": "Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-AISLACION-AT-BT",
+          "protocoloId": "p-tr02",
+          "tipoId": "AISLACION",
+          "elemento": "AT-BT",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-AISLACION-BT-T",
+          "protocoloId": "p-tr02",
+          "tipoId": "AISLACION",
+          "elemento": "BT-T",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-TTR-H1-X1",
+          "protocoloId": "p-tr02",
+          "tipoId": "TTR",
+          "elemento": "H1-X1",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-TTR-H2-X2",
+          "protocoloId": "p-tr02",
+          "tipoId": "TTR",
+          "elemento": "H2-X2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-TTR-H3-X3",
+          "protocoloId": "p-tr02",
+          "tipoId": "TTR",
+          "elemento": "H3-X3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-AT-U",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-AT-V",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-AT-W",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "AT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-BT-U",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-U",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-BT-V",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-V",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-tr02-DEVANADOS-BT-W",
+          "protocoloId": "p-tr02",
+          "tipoId": "DEVANADOS",
+          "elemento": "BT-W",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "p-tr02-TENSION_PRUEBA",
+          "pruebaId": "pr-p-tr02",
+          "parametroId": "AISLACION:TENSION_PRUEBA",
+          "valor": 5.0
+        },
+        {
+          "id": "p-tr02-LECTURA_1MIN",
+          "pruebaId": "pr-p-tr02",
+          "parametroId": "AISLACION:LECTURA_1MIN",
+          "valor": 8000.0
+        },
+        {
+          "id": "p-tr02-LECTURA_10MIN",
+          "pruebaId": "pr-p-tr02",
+          "parametroId": "AISLACION:LECTURA_10MIN",
+          "valor": 20000.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "h-p-tr02",
+          "protocoloId": "p-tr02",
+          "usuarioId": "mgodoy",
+          "anterior": "REGISTRADO_TERRENO",
+          "nuevo": "REGISTRADO_TERRENO",
+          "fechaHora": "2026-09-26T12:00:00",
+          "motivo": "Precarga histórica sintética; no es actividad real de usuarios"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-cel",
+    "datos": {
+      "registro": {
+        "id": "p-cel",
+        "numero": "PT-2026-0389",
+        "visitaId": "vis-p-cel",
+        "equipoId": "cel",
+        "creadorId": "crondon",
+        "fechaHora": "2026-09-20T08:30:00",
+        "temperatura": 22.0,
+        "humedad": 45.0,
+        "mantenimiento": "",
+        "estado": "OBSERVADO",
+        "motivo": "Precarga histórica: falta número de serie del instrumento en formulario original",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "pr-p-cel",
+          "protocoloId": "p-cel",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 1",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "contacto-demo",
+          "resultado": "OBSERVADO",
+          "comentario": "Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales",
+          "opera": true
+        },
+        {
+          "id": "p-cel-AISLACION-General",
+          "protocoloId": "p-cel",
+          "tipoId": "AISLACION",
+          "elemento": "General",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-cel-CONTACTOS-Polo 2",
+          "protocoloId": "p-cel",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-cel-CONTACTOS-Polo 3",
+          "protocoloId": "p-cel",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "p-cel-RESISTENCIA_CONTACTO",
+          "pruebaId": "pr-p-cel",
+          "parametroId": "CONTACTOS:RESISTENCIA_CONTACTO",
+          "valor": 66.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "h-p-cel",
+          "protocoloId": "p-cel",
+          "usuarioId": "smorales",
+          "anterior": "REGISTRADO_TERRENO",
+          "nuevo": "OBSERVADO",
+          "fechaHora": "2026-09-20T12:00:00",
+          "motivo": "Precarga histórica sintética; no es actividad real de usuarios"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-rel",
+    "datos": {
+      "registro": {
+        "id": "p-rel",
+        "numero": "PT-2026-0377",
+        "visitaId": "vis-p-rel",
+        "equipoId": "rel",
+        "creadorId": "dvalenzuela",
+        "fechaHora": "2026-09-15T08:30:00",
+        "temperatura": 24.0,
+        "humedad": 35.0,
+        "mantenimiento": "",
+        "estado": "FORMALIZADO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "pr-p-rel",
+          "protocoloId": "p-rel",
+          "tipoId": "OPERACION_RELE",
+          "elemento": "General",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "inyeccion",
+          "resultado": "APROBADO",
+          "comentario": "Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "p-rel-CORRIENTE_AJUSTE",
+          "pruebaId": "pr-p-rel",
+          "parametroId": "OPERACION_RELE:CORRIENTE_AJUSTE",
+          "valor": 5.0
+        },
+        {
+          "id": "p-rel-CORRIENTE_OPERACION",
+          "pruebaId": "pr-p-rel",
+          "parametroId": "OPERACION_RELE:CORRIENTE_OPERACION",
+          "valor": 5.0
+        },
+        {
+          "id": "p-rel-TIEMPO_ESPERADO",
+          "pruebaId": "pr-p-rel",
+          "parametroId": "OPERACION_RELE:TIEMPO_ESPERADO",
+          "valor": 100.0
+        },
+        {
+          "id": "p-rel-TIEMPO_MEDIDO",
+          "pruebaId": "pr-p-rel",
+          "parametroId": "OPERACION_RELE:TIEMPO_MEDIDO",
+          "valor": 100.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "h-p-rel",
+          "protocoloId": "p-rel",
+          "usuarioId": "acontreras",
+          "anterior": "REGISTRADO_TERRENO",
+          "nuevo": "FORMALIZADO",
+          "fechaHora": "2026-09-15T12:00:00",
+          "motivo": "Precarga histórica sintética; no es actividad real de usuarios"
+        }
+      ]
+    }
+  },
+  {
+    "tipo": "protocolo",
+    "id": "p-int",
+    "datos": {
+      "registro": {
+        "id": "p-int",
+        "numero": "PT-2026-0360",
+        "visitaId": "vis-p-int",
+        "equipoId": "int",
+        "creadorId": "jtapia",
+        "fechaHora": "2026-09-08T08:30:00",
+        "temperatura": 27.0,
+        "humedad": 20.0,
+        "mantenimiento": "",
+        "estado": "FORMALIZADO",
+        "motivo": "",
+        "reemplazaId": null
+      },
+      "pruebas": [
+        {
+          "id": "pr-p-int",
+          "protocoloId": "p-int",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 1",
+          "momento": "UNICA",
+          "realizada": true,
+          "motivo": "",
+          "instrumentoId": "contacto-demo",
+          "resultado": "RECHAZADO",
+          "comentario": "Valores sintéticos adicionales para representar el resultado del Anexo 9; no son datos originales",
+          "opera": true
+        },
+        {
+          "id": "p-int-AISLACION-General",
+          "protocoloId": "p-int",
+          "tipoId": "AISLACION",
+          "elemento": "General",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-int-CONTACTOS-Polo 2",
+          "protocoloId": "p-int",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 2",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        },
+        {
+          "id": "p-int-CONTACTOS-Polo 3",
+          "protocoloId": "p-int",
+          "tipoId": "CONTACTOS",
+          "elemento": "Polo 3",
+          "momento": "UNICA",
+          "realizada": false,
+          "motivo": "Demo parcial: valores no aportados por el anexo",
+          "instrumentoId": null,
+          "resultado": null,
+          "comentario": "",
+          "opera": true
+        }
+      ],
+      "mediciones": [
+        {
+          "id": "p-int-RESISTENCIA_CONTACTO",
+          "pruebaId": "pr-p-int",
+          "parametroId": "CONTACTOS:RESISTENCIA_CONTACTO",
+          "valor": 60.0
+        }
+      ],
+      "historial": [
+        {
+          "id": "h-p-int",
+          "protocoloId": "p-int",
+          "usuarioId": "smorales",
+          "anterior": "REGISTRADO_TERRENO",
+          "nuevo": "FORMALIZADO",
+          "fechaHora": "2026-09-08T12:00:00",
+          "motivo": "Precarga histórica sintética; no es actividad real de usuarios"
+        }
+      ]
+    }
+  }
+]
