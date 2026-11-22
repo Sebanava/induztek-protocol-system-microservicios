@@ -76,7 +76,17 @@ class UsuariosService(private val jdbc: JdbcTemplate, private val mapper: Object
             "La cuenta cambió en otro dispositivo. Descarga la versión actual antes de editarla.",
         )
 
-    private fun guardar(u: Identidad, clave: String?, anterior: Map<String, Any>?): Identidad {
+    private fun guardar(recibida: Identidad, clave: String?, anterior: Map<String, Any>?): Identidad {
+        val actual = anterior?.let(::perfil)
+        val correo = recibida.correo.trim()
+        if (correo != actual?.correo && !Validacion.correoValido(correo))
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo inválido")
+        val telefono = if (recibida.telefono == actual?.telefono) recibida.telefono else try {
+            Validacion.telefonoChileno(recibida.telefono)
+        } catch (e: cl.induztek.protocol.domain.ErrorFormulario) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
+        }
+        val u = recibida.copy(correo = correo, telefono = telefono)
         try {
 
             val rut = Validacion.normalizarRut(u.rut)

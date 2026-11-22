@@ -317,9 +317,17 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
                 requerir("instalacionId", "tag", "tipoId", "marca", "modelo", "serie")
                 referencia("instalacion", texto(d, "instalacionId"))
                 if (texto(d, "tipoId") !in Catalogo.equipos) error("Tipo de equipo inválido")
+                val anio = d.path("anio")
+                if (d.hasNonNull("anio") && (!anio.isIntegralNumber || !anio.canConvertToInt() ||
+                    !Validacion.fabricacionValida(anio.asInt()))) error("Año de fabricación inválido")
+                listOf("potencia", "corriente", "maxContactos").forEach { campo ->
+                    val magnitud = d.path(campo)
+                    if (d.hasNonNull(campo) && (!magnitud.isNumber || !magnitud.asDouble().isFinite() ||
+                        magnitud.asDouble() <= 0)) error("Valor inválido: $campo")
+                }
                 if (
                     texto(d, "tipoId") in listOf("CELDA", "INTERRUPTOR") &&
-                        d.path("maxContactos").asDouble() <= 0
+                        !d.hasNonNull("maxContactos")
                 )
                     error("Máximo de placa obligatorio")
                 if (
@@ -340,7 +348,13 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
                 if (!nuevas.containsAll(antiguas))
                     error("No se puede borrar el historial de calibraciones")
                 nuevas.forEach {
-                    if (texto(it, "desde") > texto(it, "hasta")) error("Calibración inválida")
+                    if (it !in antiguas) {
+                        val desde = runCatching { java.time.LocalDate.parse(texto(it, "desde")) }
+                            .getOrElse { error("Calibración inválida") }
+                        val hasta = runCatching { java.time.LocalDate.parse(texto(it, "hasta")) }
+                            .getOrElse { error("Calibración inválida") }
+                        if (desde > hasta || desde > Validacion.hoy()) error("Calibración inválida")
+                    }
                 }
             }
             "visita" -> {
@@ -352,8 +366,9 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
                     }
                 )
                     error("OT duplicada")
-                if (runCatching { java.time.LocalDate.parse(texto(d, "fecha")) }.isFailure)
-                    error("Fecha de visita inválida")
+                val fechaVisita = runCatching { java.time.LocalDate.parse(texto(d, "fecha")) }
+                    .getOrElse { error("Fecha de visita inválida") }
+                if (fechaVisita > Validacion.hoy()) error("Una visita ejecutada no puede tener fecha futura")
                 requerir("instalacionId", "ingenieroId", "ot", "fecha")
                 referencia("instalacion", texto(d, "instalacionId"))
                 permiso(actor.perfil().cierraVisita)
@@ -367,6 +382,10 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
                 )
                     error("El acta emitida no se puede modificar")
                 if (d.hasNonNull("cierre")) {
+                    val cierre = runCatching { LocalDateTime.parse(texto(d, "cierre")) }
+                        .getOrElse { error("Fecha de cierre inválida") }
+                    if (cierre.toLocalDate() < fechaVisita || cierre > Validacion.ahora())
+                        error("El cierre debe ocurrir entre la visita y la fecha actual")
                     val p =
                         vista.values.filter {
                             it.tipo == "protocolo" && texto(entidad(it), "visitaId") == c.id
@@ -379,6 +398,8 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
                             }
                     )
                         error("Hay protocolos pendientes para cerrar la visita")
+                    if (p.any { LocalDateTime.parse(texto(entidad(it), "fechaHora")) > cierre })
+                        error("El cierre no puede ser anterior a una prueba")
                     val r =
                         c.datos.path("recepciones").singleOrNull()
                             ?: error("Recepción única obligatoria")
@@ -411,6 +432,9 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
         val fecha =
             runCatching { LocalDateTime.parse(texto(p, "fechaHora")) }
                 .getOrElse { error("Fecha de prueba inválida") }
+        if (fecha > Validacion.ahora()) error("La prueba no puede tener fecha futura")
+        if (equipo.hasNonNull("anio") && !Validacion.fabricacionValida(equipo.path("anio").asInt(), fecha.toLocalDate()))
+            error("La prueba no puede ser anterior al año de fabricación")
         if (fecha.toLocalDate().toString() != texto(visita, "fecha"))
             error("La prueba debe corresponder a la fecha de visita")
         if (p.hasNonNull("reemplazaId")) {
@@ -611,6 +635,7 @@ class RegistroService(private val jdbc: JdbcTemplate, private val mapper: Object
             if (
                 !p.hasNonNull("temperatura") ||
                     !p.path("temperatura").asDouble(Double.NaN).isFinite() ||
+                    p.path("temperatura").asDouble() < -273.15 ||
                     !p.hasNonNull("humedad") ||
                     p.path("humedad").asDouble(-1.0) !in 0.0..100.0
             )

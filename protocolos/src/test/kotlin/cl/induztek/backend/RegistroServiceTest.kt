@@ -404,7 +404,7 @@ class RegistroServiceTest {
             (get("registro") as ObjectNode).put("clienteId", "clinica")
         }
         val celda = obtener("equipo", "cel")
-        validarCambio(celda, tecnico, "Máximo de placa obligatorio") {
+        validarCambio(celda, tecnico, "Valor inválido: maxContactos") {
             (get("registro") as ObjectNode).put("maxContactos", 0)
         }
         validarCambio(celda, tecnico, "La identidad del equipo no puede cambiar al sincronizar") {
@@ -537,4 +537,24 @@ class RegistroServiceTest {
         }
     }
 
+
+    @Test
+    fun servidorValidaAnioYFechasSinRechazarVisitasHistoricas() {
+        val futuro = cl.induztek.protocol.domain.Validacion.hoy().plusDays(2)
+        val celda = obtener("equipo", "cel")
+        validarCambio(celda, tecnico, "Año de fabricación inválido") {
+            (get("registro") as ObjectNode).put("anio", futuro.year + 1)
+        }
+        validarCambio(celda, tecnico, "Valor inválido: corriente") {
+            (get("registro") as ObjectNode).put("corriente", "20")
+        }
+        val visita = obtener("visita", "vis-2026")
+        validarCambio(visita, tecnico, "Una visita ejecutada no puede tener fecha futura") {
+            (get("registro") as ObjectNode).put("fecha", futuro.toString())
+        }
+        val borrador = borrador()
+        validarCambio(borrador, tecnico, "La prueba no puede tener fecha futura") {
+            (get("registro") as ObjectNode).put("fechaHora", futuro.atStartOfDay().toString())
+        }
+    }
 }

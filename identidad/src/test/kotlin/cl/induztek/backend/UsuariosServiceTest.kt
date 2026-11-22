@@ -317,4 +317,20 @@ class UsuariosServiceTest {
             antigua.execute("SHUTDOWN")
         }
     }
+
+    @Test
+    fun servidorRechazaCorreoYTelefonoInvalidosAntesDeGuardar() {
+        val original = service.listar(jefe()).first { it.perfil().name == "CLIENTE" }
+        val correoInvalido = json(original.copy(correo = "foo@-empresa.cl"))
+        val telefonoInvalido = json(original.copy(telefono = "91234567890"))
+        for ((perfil, campo) in listOf(correoInvalido to "Correo", telefonoInvalido to "9 dígitos")) {
+            val error = assertThrows(ResponseStatusException::class.java) {
+                service.sincronizar(jefe(), listOf(perfil))
+            }
+            assertEquals(400, error.statusCode.value())
+            assertTrue(error.reason.orEmpty().contains(campo))
+        }
+        val datos = json(original.copy(telefono = "+56 (9) 1234-5678"))
+        assertEquals("+56912345678", service.sincronizar(jefe(), listOf(datos)).single().telefono)
+    }
 }
